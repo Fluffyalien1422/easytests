@@ -41,7 +41,7 @@ First, create a `tsconfig.json` in your `tests` directory with the following con
   "compilerOptions": {
     "target": "es2022",
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
     "noEmit": true
   }

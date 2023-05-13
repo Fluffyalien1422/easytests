@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
 declare global {
-  var $EASYTESTS: typeof import("../dist/api");
+  var $EASYTESTS: typeof import("../dist/api.ts");
 }
 
 export {};
