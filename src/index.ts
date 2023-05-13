@@ -32,16 +32,28 @@ function compileWithBabel(filePath: string) {
   return res.code;
 }
 
+export interface ExecuteInTestContextOptions {
+  /**
+   * The HTML that will be simulated in JSDom.
+   */
+  html?: string;
+  /**
+   * Options to pass to the JSDOM constructor.
+   */
+  jsdomOptions?: jsdom.ConstructorOptions;
+  /**
+   * The base path of your project (where the `node_modules` directory is.) This is used
+   * to import files from node modules.
+   */
+  basePath?: string;
+}
+
 /**
  * Executes a file in the test context. This file can be a TypeScript or JavaScript file.
  */
 export async function executeInTestContext(
   filePath: string,
-  options: {
-    html?: string;
-    jsdomOptions?: jsdom.ConstructorOptions;
-    basePath?: string;
-  } = {}
+  options: ExecuteInTestContextOptions = {}
 ) {
   if (![".js", ".mjs", ".ts", ".mts"].includes(path.extname(filePath)))
     throw new Error(
@@ -62,7 +74,7 @@ export async function executeInTestContext(
 
     if (specifier.endsWith(".d.ts")) source = "";
     else if (specifier.startsWith("./"))
-      source = compileWithBabel(path.join(filePath, specifier));
+      source = compileWithBabel(path.join(path.dirname(filePath), specifier));
     else
       source = compileWithBabel(
         getMainPathFromNodeModule(specifier, options.basePath)
