@@ -52,7 +52,7 @@ Next, create a `tests/my_test.test.ts` file with the following content:
 
 ```ts
 // Imports ending in .d.ts will be ignored by the module loader
-import "../types/test_globals.d.ts";
+import "easytests/types/test_globals.d.ts";
 const { Test, Group } = $EASYTESTS;
 
 // Also import the files you will be testing:
@@ -69,7 +69,7 @@ Now we can start writing our test.
 All tests should be contained within one main `Group`:
 
 ```ts
-import "../types/test_globals.d.ts";
+import "easytests/types/test_globals.d.ts";
 const { Test, Group } = $EASYTESTS;
 
 new Group(
@@ -85,7 +85,7 @@ Tests are simple. All you need to do is return `true` or `false` to pass or fail
 You can create a test like this:
 
 ```ts
-import "../types/test_globals.d.ts";
+import "easytests/types/test_globals.d.ts";
 const { Test, Group } = $EASYTESTS;
 
 new Group(
@@ -100,7 +100,7 @@ new Group(
 However, you shouldn't create loose tests. Instead, organize them into a group:
 
 ```ts
-import "../types/test_globals.d.ts";
+import "easytests/types/test_globals.d.ts";
 const { Test, Group } = $EASYTESTS;
 
 new Group(
@@ -118,7 +118,7 @@ new Group(
 Tests can also be asynchronous:
 
 ```ts
-import "../types/test_globals.d.ts";
+import "easytests/types/test_globals.d.ts";
 const { Test, Group } = $EASYTESTS;
 
 new Group(
