@@ -32,6 +32,9 @@ function compileWithBabel(filePath: string) {
   return res.code;
 }
 
+/**
+ * Executes a file in the test context. This file can be a TypeScript or JavaScript file.
+ */
 export async function executeInTestContext(
   filePath: string,
   options: {
